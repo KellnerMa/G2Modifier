@@ -1,0 +1,89 @@
+# Grandia II Modifier, Sprachdatei. Format: deutscher Text TAB Uebersetzung. de usw. = Platzhalter.
+# Diese Datei darf korrigiert werden: als sprachen\de.txt neben G2Modifier.exe ablegen, sie hat dann Vorrang.
+# Nur die englischen Bezeichnungslisten aus G2DataGUI -> deutsch
+None	Keine
+Unknown	Unbekannt
+Special	Spezial
+Item	Gegenstand
+Perm. Stat Modifier(?)	Dauerhafte Wertänderung (?)
+Weapon	Waffe
+Armour	Rüstung
+Headgear	Kopfbedeckung
+Footwear	Schuhe
+Accessory	Accessoire
+Mana Egg	Mana-Ei
+Valuable	Wertgegenstand
+Skillbook	Fertigkeitsbuch
+Bird	Vogel
+Bug/Crustacean	Insekt/Krebstier
+Bug	Insekt
+Reptile	Reptil
+Animal	Tier
+Humanoid	Humanoid
+Undead	Untot
+Valmar	Valmar
+Unknown #{0}	Unbekannt #{0}
+Restore HP(MEN)	HP heilen (MEN)
+Restore MP	MP heilen
+Restore SP	SP heilen
+Ally Buff/Debuff	Verbündete stärken/schwächen
+Physical Damage	Physischer Schaden
+Magical Damage	Magischer Schaden
+Enemy Buff/Debuff	Gegner stärken/schwächen
+Status Change	Zustandsänderung
+One Ally	Ein Verbündeter
+Area Allies	Verbündete im Bereich
+All Allies	Alle Verbündeten
+One Enemy	Ein Gegner
+Area Enemies	Gegner im Bereich
+All Enemies	Alle Gegner
+Enemy Line	Gegner in einer Linie
+Self	Selbst
+Area Around Self	Bereich um sich selbst
+Fire	Feuer
+Wind	Wind
+Earth	Erde
+Lightning	Blitz
+Blizzard	Blizzard
+Water	Wasser
+Explosion	Explosion
+Forest	Wald
+Light	Licht
+Darkness	Dunkelheit
+Sword	Schwert
+Staff	Stab
+Crossbow	Armbrust
+Dagger	Dolch
+Poleaxe	Streitaxt
+Chakram	Chakram
+Red Shoe	Roter Schuh
+Special Coins	Spezialmünzen
+Magic Coins	Magiemünzen
++{0} SP recover when hit	+{0} SP bei Treffer
++{0} SP regen	+{0} SP-Regeneration
++{0} combo attack	+{0} Kombo-Angriff
++{0}% evasion	+{0} % Ausweichen
+-1 ACT from hit	-1 AKT durch Treffer
+-1 ATK from hit	-1 ANG durch Treffer
+-1 DEF from hit	-1 VER durch Treffer
+-1 MOV from hit	-1 BEW durch Treffer
+-{0}% MP consumption	-{0} % MP-Verbrauch
+-{0}% SP consumption	-{0} % SP-Verbrauch
+{0}% HP regen	{0} % HP-Regeneration
+{0}% MP regen	{0} % MP-Regeneration
+{0}% damage as HP	{0} % des Schadens als HP
+{0}% damage as MP(Broken)	{0} % des Schadens als MP (defekt)
+Evade attacks	Angriffen ausweichen
+Negate < {0} damage	Schaden unter {0} aufheben
+Negate knockback	Rückstoß aufheben
+Null magic	Magie aufheben
+Raises power of Moves	Erhöht die Kraft von Aktionen
+Up power of Moves	Kraft von Aktionen erhöht
+Ups power of Moves	Steigert die Kraft von Aktionen
+Reduce IP slowing	IP-Verlangsamung verringern
+Suppress IP slowing	IP-Verlangsamung unterdrücken
+Reflect damage	Schaden zurückwerfen
+Revives character	Belebt die Figur wieder
+Warp	Teleport
+Physical Attack	Physischer Angriff
+unknown {0}	unbekannt {0}

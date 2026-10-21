@@ -1,0 +1,650 @@
+# Grandia II Modifier, Sprachdatei. Format: deutscher Text TAB Uebersetzung. en usw. = Platzhalter.
+# Diese Datei darf korrigiert werden: als sprachen\en.txt neben G2Modifier.exe ablegen, sie hat dann Vorrang.
+Start	Home
+Spieldaten	Game data
+Gegner	Enemies
+Bosse	Bosses
+Figuren	Characters
+Avatare	Avatars
+Rage	Rage
+System	System
+Dateien und Backup	Files and backup
+Über und Quellen	About and sources
+Über	About
+Version	Version
+Suchen: Gegenstand, Move, Gegner, Seite ...	Search: item, move, enemy, page ...
+Keine Treffer	No results
+Speichern	Save
+Verwerfen	Discard
+Wählen ...	Choose ...
+1 Datei mit ungespeicherten Änderungen	1 file with unsaved changes
+{0} Dateien mit ungespeicherten Änderungen	{0} files with unsaved changes
+Rage-Gesichter ungespeichert	Rage faces not saved
+Backup	Backup
+KEIN BACKUP-ORDNER: Speichern gesperrt	NO BACKUP FOLDER: saving disabled
+Sprache umgestellt.	Language changed.
+Unerwarteter Fehler. Es wurde nichts zusätzlich geschrieben.	Unexpected error. Nothing additional was written.
+Gegenstände	Items
+Moves und Zauber	Moves and magic
+Skills	Skills
+Manaeier	Mana Eggs
+Skillbücher	Skill Books
+Spezialtechniken	Special moves
+Startwerte	Starting stats
+Level-ups	Level-ups
+Normal	Normal
+Hard	Hard
+Willkommen	Welcome
+Wähle den Ordner, in dem Grandia II installiert ist (mit grandia2.exe und content). Danach fragt das Tool nach einem Backup-Ordner außerhalb des Spielordners. Ohne Backup wird nie etwas gespeichert.	Choose the folder where Grandia II is installed (the one containing grandia2.exe and content). The tool then asks for a backup folder outside the game folder. Without a backup, nothing is ever saved.
+Spielordner wählen ...	Choose game folder ...
+Was willst du ändern?	What do you want to change?
+Werkzeuge	Tools
+Gegner und Bosse skalieren	Scale enemies and bosses
+HP, Abwehr, Angriff und Belohnungen aller Gegner per Faktor ändern	Change HP, defense, attack and rewards of all enemies by a factor
+Zustand jeder Datei, Wiederherstellen aus dem Backup	Status of every file, restore from backup
+Zustand	Status
+nicht festgelegt, Speichern gesperrt	not set, saving disabled
+{0} Dateien geladen, {1} gegenüber dem Backup verändert, {2} gesperrt.	{0} files loaded, {1} changed compared to the backup, {2} locked.
+Anderen Spielordner wählen ...	Choose another game folder ...
+{0} Bilddateien	{0} image files
+{0} Einträge	{0} entries
+an	on
+aus	off
+auch nach New Valmar	also after New Valmar
+endet mit Elena	ends with Elena
+Preise, Ausrüstungswerte und Wirkung von Verbrauchsgegenständen	Prices, equipment stats and effects of consumable items
+Kosten, Stärke, Reichweite und Wirkzeit von Moves und Zaubern	Cost, strength, range and cast time of moves and magic
+Grundwerte und Münzkosten der Skills	Base values and coin costs of skills
+Welche Zauber ein Manaei enthält und ab welcher Stufe	Which spells a Mana Egg contains and from which level
+Welche Skills ein Skillbuch enthält	Which skills a Skill Book contains
+Spezialtechniken je Figur und ab wann sie verfügbar sind	Special moves per character and when they become available
+Startausrüstung und Grundwerte der Figuren	Starting equipment and base stats of the characters
+Wertezuwachs je Stufe und Figur	Stat growth per level and character
+HP, Werte, Belohnungen und Angriffe normaler Gegner	HP, stats, rewards and attacks of regular enemies
+HP, Werte, Belohnungen und Angriffe der Bosse	HP, stats, rewards and attacks of bosses
+Porträts für Menü, Dialog, Kampf und Siegbildschirm	Portraits for menu, dialogue, battle and victory screen
+Rage an- und ausschalten, auf andere Figuren übertragen, eigene Rage-Gesichter	Turn Rage on or off, give it to other characters, custom Rage faces
+Datei	File
+Struktur	Structure
+Stand	State
+Hinweise	Notes
+Nur veränderte und gesperrte Dateien zeigen	Show only changed and locked files
+Markierte wiederherstellen	Restore selected
+Alle veränderten wiederherstellen	Restore all changed
+Backup-Ordner öffnen	Open backup folder
+Backup-Ordner wechseln ...	Change backup folder ...
+Spielordner wechseln ...	Change game folder ...
+Geschrieben werden nur geänderte Bytes. Jede Datei nur mit geprüfter Sicherung (SHA-256). Jede Speicherung steht im Änderungsprotokoll im Backup-Ordner.	Only changed bytes are written. A file is only written if a verified backup (SHA-256) exists. Every save is recorded in the change log in the backup folder.
+Spielordner	Game folder
+Datenordner	Data folder
+geprüft	verified
+PROBLEM	PROBLEM
+GESPERRT	LOCKED
+gesperrt	locked
+Original	Original
+verändert	changed
+kein Backup	no backup
+Grandia-II-Spielordner wählen (der Ordner mit grandia2.exe und content).	Choose the Grandia II game folder (the folder containing grandia2.exe and content).
+Bitte zuerst den Spielordner öffnen.	Please open the game folder first.
+Backup-Ordner wählen. Er muss AUSSERHALB des Spielordners liegen, z. B. Dokumente\\Grandia2-Backup. Ohne Backup-Ordner speichert das Tool nichts.	Choose a backup folder. It must be OUTSIDE the game folder, e.g. Documents\\Grandia2-Backup. Without a backup folder the tool saves nothing.
+Backup-Ordner ungültig	Invalid backup folder
+Kein Backup-Ordner gewählt.	No backup folder selected.
+Der Backup-Ordner darf nicht der Spielordner sein.	The backup folder must not be the game folder.
+Der Backup-Ordner darf nicht im Spielordner liegen. Steam kann ihn bei Updates oder Dateiprüfungen verändern.	The backup folder must not be inside the game folder. Steam may change it during updates or file verification.
+Der Spielordner darf nicht im Backup-Ordner liegen.	The game folder must not be inside the backup folder.
+{0} Dateien geladen	{0} files loaded
+{0} gesperrt (siehe Dateien und Backup)	{0} locked (see Files and backup)
+Jetzt werden alle {0} bearbeitbaren Dateien gesichert nach:	All {0} editable files will now be backed up to:
+Diese Sicherung gilt ab jetzt als Original und wird nie überschrieben.	From now on this backup counts as the original and is never overwritten.
+Wichtig: Falls die Spieldateien schon gemoddet sind, vorher abbrechen und in Steam "Dateien auf Fehler überprüfen" ausführen.	Important: if the game files are already modded, cancel now and run "Verify integrity of game files" in Steam first.
+Erstes Backup	First backup
+Backup {0}/{1} ...	Backup {0}/{1} ...
+{0} weitere Dateien wurden neu gesichert (z. B. grandia2.exe und Porträts).	{0} additional files were backed up (e.g. grandia2.exe and portraits).
+Diese Sicherung gilt ab jetzt als Original. Falls du diese Dateien schon mit einem anderen Werkzeug verändert hattest, stimmt dieses "Original" nicht. Dann in Steam "Dateien auf Fehler überprüfen" ausführen und danach einen neuen, leeren Backup-Ordner wählen.	From now on this backup counts as the original. If you had already changed these files with another tool, this "original" is not correct. In that case run "Verify integrity of game files" in Steam and then choose a new, empty backup folder.
+Backup erweitert	Backup extended
+Probleme mit dem Backup. Diese Dateien werden NICHT gespeichert:	Backup problems. These files will NOT be saved:
+{0} Dateien gesichert, {1} bereits vorhanden und geprüft.	{0} files backed up, {1} already present and verified.
+Backup geprüft: alle {0} Sicherungen stimmen mit dem Manifest überein.	Backup verified: all {0} copies match the manifest.
+Es gibt ungespeicherte Änderungen in {0} Datei(en). Jetzt speichern?	There are unsaved changes in {0} file(s). Save now?
+Keine Änderungen zu speichern.	No changes to save.
+Ohne gültigen Backup-Ordner wird nichts gespeichert. Bitte jetzt einen Ordner außerhalb des Spielordners wählen.	Nothing is saved without a valid backup folder. Please choose a folder outside the game folder now.
+Backup fehlt	Backup missing
+Grandia II läuft gerade. Änderungen wirken erst nach einem Neustart des Spiels. Trotzdem speichern?	Grandia II is currently running. Changes only take effect after restarting the game. Save anyway?
+Fehler beim Speichern:	Error while saving:
+Rage-Gesichter im Backup-Ordner gesichert.	Rage faces stored in the backup folder.
+Rage-Gesichter konnten nicht gesichert werden:	Rage faces could not be stored:
+Protokoll	Log
+Gespeichert	Saved
+Teilweise gespeichert	Partially saved
+Gespeichert.	Saved.
+Nicht alles gespeichert, siehe Meldung.	Not everything was saved, see message.
+Alle ungespeicherten Änderungen in {0} Datei(en) verwerfen?	Discard all unsaved changes in {0} file(s)?
+Änderungen verworfen.	Changes discarded.
+{0} Datei(en) aus dem Backup wiederherstellen? Ungespeicherte Änderungen daran gehen verloren.	Restore {0} file(s) from the backup? Unsaved changes to them will be lost.
+{0} Datei(en) wiederhergestellt.	{0} file(s) restored.
+Gespeichert: {0} ({1} geänderte Bereiche)	Saved: {0} ({1} changed ranges)
+NICHT geschrieben (kein geprüftes Backup)	NOT written (no verified backup)
+NICHT geschrieben (Datei gesperrt)	NOT written (file locked)
+NICHT geschrieben (Datei wurde außerhalb des Tools geändert, bitte neu laden)	NOT written (file was changed outside the tool, please reload)
+NICHT geschrieben (Dateigröße würde sich ändern)	NOT written (file size would change)
+Kein geprüftes Backup für {0}	No verified backup for {0}
+Backup-Datei fehlt: {0}	Backup file missing: {0}
+Backup-Datei beschädigt (Prüfsumme passt nicht zum Manifest): {0}	Backup file damaged (checksum does not match the manifest): {0}
+Im Backup liegt bereits eine Datei ohne Manifest-Eintrag: {0}. Bitte prüfen oder anderen Backup-Ordner wählen.	The backup already contains a file without a manifest entry: {0}. Please check it or choose another backup folder.
+Backup konnte nicht fehlerfrei geschrieben werden: {0}	Backup could not be written without errors: {0}
+{0} Werte in {1} Einträgen geändert	{0} values changed in {1} entries
+{0} auf das Maximum des Feldtyps begrenzt	{0} capped at the field type's maximum
+Noch nicht gespeichert: Strg+S.	Not saved yet: Ctrl+S.
+Skalieren	Scale
+Bereich	Scope
+Faktoren (1,00 = unverändert, 0 bleibt 0)	Factors (1.00 = unchanged, 0 stays 0)
+Wirkt nur im Arbeitsspeicher. Geschrieben wird erst mit Strg+S. Welche Werte im Kampf wie wirken, steht nicht vollständig fest. Erst klein anfangen (z. B. 1,5) und im Spiel testen.	Changes are applied in memory only. Nothing is written until Ctrl+S. How each value acts in battle is not fully known. Start small (e.g. 1.5) and test in the game.
+Anwenden	Apply
+Bitte mindestens einen Bereich wählen.	Please choose at least one scope.
+Vitalität (Abwehr)	Vitality (defense)
+Mentalität (Magieabwehr)	Mentality (magic defense)
+Angriffe: Stärke	Attacks: strength
+Angriffe: Kraft	Attacks: power
+Skill- und Magie-Münzen	Special and Magic Coins
+Editor für Grandia II HD Remaster / Anniversary Edition (PC), aufgebaut nach dem Schema des Spira Modifier.	Editor for Grandia II HD Remaster / Anniversary Edition (PC), modeled on the Spira Modifier.
+Byte-Layouts: G2DataGUI von krogenth (MIT-Lizenz), github.com/krogenth/G2DataGUI.	Byte layouts: G2DataGUI by krogenth (MIT license), github.com/krogenth/G2DataGUI.
+Bezeichnungslisten (Animationen, Spezialeffekte, Gegnertypen) ebenfalls von dort, englisch belassen.	Label lists (animations, special effects, enemy types) also from there.
+Felder, die dort als "Unknown" geführt sind, heißen hier "Unbekannt" und sind standardmäßig gesperrt.	Fields listed there as "Unknown" keep that name here and are locked by default.
+Rage und Avatare: eigene Analyse der grandia2.exe (Steam) per Ghidra. Jede Patchstelle wird vor dem Schreiben gegen das erwartete Bytemuster geprüft.	Rage and avatars: original analysis of grandia2.exe (Steam) using Ghidra. Every patch location is checked against the expected byte pattern before writing.
+Spielbegriffe in Englisch und Französisch: aus den offiziellen Texten des Spiels (content\\data\\text).	English and French game terms: taken from the game's official texts (content\\data\\text).
+Sprachdatei	Language file
+eingebettet	built-in
+Ohne Gewähr. Backups liegen im gewählten Backup-Ordner.	No warranty. Backups are in the selected backup folder.
+Kopie:	Copy:
+Modus:	Mode:
+Liste filtern:	Filter list:
+Änderung in alle Kopien schreiben	Write change to all copies
+Unbekannte Felder bearbeitbar	Unknown fields editable
+CSV-Export	CSV export
+Alle skalieren ...	Scale all ...
+Übernehmen	Apply
+Werte kopieren	Copy values
+Werte einfügen	Paste values
+Eintrag auf Original	Reset to original
+Abschnitt	Section
+Feld	Field
+Wert	Value
+Bedeutung	Meaning
+Typ	Type
+Offset	Offset
+{0} Änderung(en) nicht übernommen	{0} change(s) not applied
+{0} Dateien  ·  {1} Einträge	{0} files  ·  {1} entries
+GESPERRT: Diese Datei(en) passen nicht zur belegten Struktur. Das Tool zeigt und schreibt sie nicht.	LOCKED: these file(s) do not match the documented structure. The tool neither shows nor writes them.
+Keine Einträge	No entries
+Exportiert: {0}	Exported: {0}
+Stand der Datei	File state
+ungespeichert	unsaved
+Quelle: G2DataGUI, Feld {0}	Source: G2DataGUI, field {0}
+(dort als Unknown geführt)	(listed there as Unknown)
+Doppelklick oder Enter: Auswahl	Double-click or Enter: choose
+{0} Änderung(en) sind noch nicht übernommen.\n\nJa = jetzt übernehmen\nNein = verwerfen\nAbbrechen = hierbleiben	{0} change(s) have not been applied yet.\n\nYes = apply now\nNo = discard\nCancel = stay here
+Nicht übernommen	Not applied
+{0} Wert(e) in anderen Kopien weichen schon vorher ab:	{0} value(s) in other copies already differ:
+Trotzdem überschreiben?	Overwrite anyway?
+Kopien weichen ab	Copies differ
+{0} Wert(e) übernommen	{0} value(s) applied
+Kopien: {0} Datei(en) mitgezogen	copies: {0} file(s) updated as well
+Speichern mit Strg+S.	Save with Ctrl+S.
+Werte von "{0}" kopiert ({1} Felder, ohne Namen, Texte und Zeiger).	Values of "{0}" copied ({1} fields, without names, texts and pointers).
+Die kopierten Werte stammen aus einer anderen Tabelle.	The copied values come from a different table.
+{0} Werte von "{1}" vorgemerkt. Mit "Übernehmen" bestätigen.	{0} values from "{1}" queued. Confirm with "Apply".
+{0} Werte auf Original vorgemerkt. Mit "Übernehmen" bestätigen.	{0} values queued for reset to original. Confirm with "Apply".
+Unbekannte Bits 0x{0} bleiben unverändert gesetzt.	Unknown bits 0x{0} remain set.
+Datensatz	Record
+Quelle-Feldname	Source field name
+Wert {0} außerhalb {1} bis {2}	Value {0} outside {1} to {2}
+Keine gültige Zahl: "{0}"	Not a valid number: "{0}"
+{0}: erlaubt {1} bis {2}, eingegeben {3}	{0}: allowed {1} to {2}, entered {3}
+unbekannte Bits 0x{0}	unknown bits 0x{0}
+keine	none
+(kein Eintrag in der Bezeichnungsliste)	(no entry in the label list)
+Zeichen '{0}' ist nicht erlaubt. Erlaubt: einfache ASCII-Zeichen (keine Umlaute), Sonderbytes als {{XX}}.	Character '{0}' is not allowed. Allowed: plain ASCII characters (no umlauts or accents), special bytes as {{XX}}.
+Text zu lang: {0} Zeichen, maximal {1}.	Text too long: {0} characters, maximum {1}.
+Unbekanntes Format {0}	Unknown format {0}
+(ohne Namen)	(no name)
+{0} von {1} Namen enthalten keine lesbaren Zeichen. Das Layout passt nicht zu dieser Datei.	{0} of {1} names contain no readable characters. The layout does not match this file.
+{0} Namen enthalten Sonderbytes (werden als {{XX}} angezeigt und unverändert erhalten).	{0} names contain special bytes (shown as {{XX}} and kept unchanged).
+Dateigröße {0} Bytes, erwartet {1} ({2} x {3}). Datei gesperrt.	File size {0} bytes, expected {1} ({2} x {3}). File locked.
+Datei kleiner als die Item-Tabelle ({0} < {1} Bytes). Datei gesperrt.	File smaller than the item table ({0} < {1} bytes). File locked.
+Item {0}: Zeiger Ausrüstung 0x{1} zeigt außerhalb des Datenbereichs.	Item {0}: equipment pointer 0x{1} points outside the data area.
+Item {0}: unerwarteter Zeigerwert {1}	Item {0}: unexpected pointer value {1}
+Item {0}: Zeiger Verwendung 0x{1} zeigt außerhalb des Datenbereichs.	Item {0}: usage pointer 0x{1} points outside the data area.
+{0} Items haben im ID-Feld einen anderen Wert als ihre Position (nur Info, ID bleibt unverändert).	{0} items have a different value in the ID field than their position (info only, ID stays unchanged).
+... {0} weitere Fehler	... {0} more errors
+Dateigröße {0} ist kein Vielfaches von {1}. Datei gesperrt.	File size {0} is not a multiple of {1}. File locked.
+Dateigröße {0} ist kein Vielfaches von {1} (99 Stufen x 24 Bytes). Datei gesperrt.	File size {0} is not a multiple of {1} (99 levels x 24 bytes). File locked.
+Datei zu klein für den Kopf ({0} Bytes).	File too small for the header ({0} bytes).
+Gegner {0}: Werte-Zeiger 0x{1} ungültig.	Enemy {0}: stats pointer 0x{1} invalid.
+Gegner {0}: Angriffs-Zeiger 0x{1} ungültig.	Enemy {0}: attack pointer 0x{1} invalid.
+Gegner {0}: Name an 0x{1} ist kein Text. Layout passt nicht.	Enemy {0}: name at 0x{1} is not text. Layout does not match.
+afs-Ordner direkt gewählt	afs folder selected directly
+Kein Grandia-II-Datenordner gefunden.\nErwartet: <Spielordner>\\content\\data\\afs (HD Remaster) oder <Spielordner>\\data\\afs (Anniversary Edition).	No Grandia II data folder found.\nExpected: <game folder>\\content\\data\\afs (HD Remaster) or <game folder>\\data\\afs (Anniversary Edition).
+Hinweis: Es gibt sowohl content\\data\\afs als auch data\\afs. Bearbeitet wird content\\data\\afs (HD Remaster).	Note: both content\\data\\afs and data\\afs exist. content\\data\\afs (HD Remaster) is edited.
+{0} wurde in keinem der Ordner {1} gefunden.	{0} was not found in any of the folders {1}.
+Ordner {0} fehlt.	Folder {0} is missing.
+Kopie identisch mit {0}	Copy identical to {0}
+Kopie weicht von {0} ab ({1} Bereiche)	Copy differs from {0} ({1} ranges)
+andere Größe	different size
+grandia2.exe nicht im Spielordner gefunden: Rage-Einstellungen nicht verfügbar.	grandia2.exe not found in the game folder: Rage settings unavailable.
+GBIX bei 0x{0}: {1}	GBIX at 0x{0}: {1}
+({0} nicht geladen)	({0} not loaded)
+(Index außerhalb 0..{0})	(index outside 0..{0})
+{0} liegt nicht im Spielordner {1}	{0} is not inside the game folder {1}
+Figur	Character
+zu kurz für DDS	too short for DDS
+keine DDS-Kennung	no DDS signature
+DDS-Headergröße unerwartet	unexpected DDS header size
+kein unkomprimiertes RGBA (Pixelformat-Flags 0x{0})	not uncompressed RGBA (pixel format flags 0x{0})
+nicht 32 bit	not 32-bit
+unerwartete Farbmasken	unexpected color masks
+unplausible Größe {0}x{1}	implausible size {0}x{1}
+Dateigröße passt nicht zu {0}x{1} (Mipmaps oder Zusatzdaten)	file size does not match {0}x{1} (mipmaps or extra data)
+Bildgröße {0}x{1} passt nicht zur Datei {2}x{3}	image size {0}x{1} does not match the file {2}x{3}
+Ändert grandia2.exe direkt. Wirkt nach Strg+S und Neustart des Spiels. Die Exe liegt im Backup, "Original" stellt sie bytegleich wieder her.	Changes grandia2.exe directly. Takes effect after Ctrl+S and restarting the game. The exe is in the backup; "Original" restores it byte for byte.
+Einstellungen	Settings
+Rage-Modus aktiv	Rage mode enabled
+Rage endet, sobald Elena in der Gruppe ist	Rage ends once Elena is in the party
+(Original: ab New Valmar keine Rage mehr)	(original: no more Rage from New Valmar on)
+Figur mit Rage	Character with Rage
+(Original)	(original)
+(experimentell)	(experimental)
+Dauer	Duration
+Original 1200	Original 1200
+Einheit: interne Spieltakte. Die Umrechnung in Sekunden ist nicht geprüft.	Unit: internal game ticks. The conversion to seconds has not been verified.
+Rage-Einstellungen auf Original zurücksetzen	Reset Rage settings to original
+Rage auf Original gesetzt.	Rage set to original.
+Rage-Gesichter	Rage faces
+Jede Figur hat ihr eigenes Paar. Ins Spiel geschrieben wird immer das Paar der aktuellen Rage-Figur, in 128 × 128 Pixeln.	Each character has their own pair. The game always receives the pair of the current Rage character, at 128 × 128 pixels.
+Während der Rage	During Rage
+Nach der Rage	After Rage
+Ersetzt beim Start der Rage das Kampfporträt. Im Original Millenias böses Lächeln (64 × 64).	Replaces the battle portrait when Rage starts. In the original: Millenia's wicked smile (64 × 64).
+Bleibt nach dem Ende der Rage bis Kampfende stehen. Standard: das normale Kampfporträt.	Stays after Rage ends until the battle is over. Default: the normal battle portrait.
+Standard	Default
+{0}: Rage-Gesicht auf Standard gesetzt.	{0}: Rage face set to default.
+grandia2.exe nicht gefunden.	grandia2.exe not found.
+grandia2.exe GESPERRT	grandia2.exe LOCKED
+Ungespeichert. Strg+S schreibt grandia2.exe und die Party-Dateien.	Unsaved. Ctrl+S writes grandia2.exe and the party files.
+grandia2.exe ist gegenüber dem Backup verändert.	grandia2.exe differs from the backup.
+Kein Backup der Exe: Speichern gesperrt.	No backup of the exe: saving disabled.
+grandia2.exe entspricht dem Backup (Original).	grandia2.exe matches the backup (original).
+{0} hat die Rage. Dieses Paar steht im Spiel.	{0} has the Rage. This pair is in the game.
+Wird ins Spiel geschrieben, sobald {0} die Rage-Figur ist.	Written to the game as soon as {0} is the Rage character.
+eigenes Bild	custom image
+Standard: Originalbild des Spiels	Default: the game's original image
+Standard: Kampfporträt	Default: battle portrait
+Exe uneinheitlich:	Exe inconsistent:
+Einmal auf Original zurücksetzen behebt das.	Resetting to original once fixes this.
+Rage ist aus. Keine Figur bekommt den Rage-Modus.	Rage is off. No character gets Rage mode.
+Elena hat die Rage, aber die Elena-Sperre ist an. Dann löst die Rage nie aus. Haken oben entfernen.	Elena has the Rage, but the Elena lock is on, so Rage will never trigger. Untick the box above.
+{0} ist experimentell. Bitte im Spiel testen und bei Problemen zurück auf Millenia.	{0} is experimental. Please test in the game and switch back to Millenia if there are problems.
+Rage: {0}, {1}, Dauer {2}{3}. Noch nicht gespeichert (Strg+S).	Rage: {0}, {1}, duration {2}{3}. Not saved yet (Ctrl+S).
+Tipp: Die schärfsten Quellen sind Menü (192 Pixel) und Dialog (96 Pixel). Millenias böses Lächeln als Dialogbild ist f0314.	Tip: the sharpest sources are Menu (192 pixels) and Dialogue (96 pixels). Millenia's wicked smile as a dialogue image is f0314.
+{0}: {1} gesetzt. Noch nicht gespeichert (Strg+S).	{0}: {1} set. Not saved yet (Ctrl+S).
+So arbeitet die Rage laut Exe: Die Figur sammelt Wut bei Treffern, eigenen Fehlschlägen und wenn Verbündete fallen. Ab der Wut-Schwelle (Original 100) entscheidet bei jedem Treffer ein Zufallswurf. Beim Auslösen: SP auf Maximum, IP-Leiste doppelt so schnell, Autopilot, das Kampfporträt wechselt auf das Rage-Gesicht. Am Ende kommt das Bild "Nach der Rage".	How Rage works according to the exe: the character builds up anger when hit, when missing their own attacks and when allies fall. From the rage threshold (original 100) a random roll decides on every hit. When triggered: SP to maximum, IP gauge twice as fast, autopilot, the battle portrait switches to the Rage face. At the end the "After Rage" image appears.
+Andere Figuren: Die Steuerung ist komplett umgestellt. Ungeprüft im Spiel ist, wie der Autopilot mit fremden Moves umgeht (sein Rückfall ist Makel des Windes) und ob Start- und End-Effekte für andere Modelle sauber aussehen.	Other characters: the logic is fully switched over. Not yet tested in the game: how the autopilot handles other characters' moves (its fallback is Taint of Wind) and whether the start and end effects look clean on other models.
+keine Windows-Exe	not a Windows exe
+ID-Vergleich bei 0x{0}	ID comparison at 0x{0}
+Rage-Sperre bei Datei 0x{0}	Rage lock at file offset 0x{0}
+Dauer (setzen)	duration (set)
+Dauer (Vergleich)	duration (comparison)
+Dateiindex Rage-Start	file index Rage start
+Dateiindex Rage-Ende	file index Rage end
+Unbekannte Exe-Version, {0} Stelle(n) passen nicht: {1}	Unknown exe version, {0} location(s) do not match: {1}
+Die 13 Figuren-Vergleiche haben verschiedene Werte ({0}).	The 13 character comparisons have different values ({0}).
+Die beiden Dauer-Werte sind verschieden.	The two duration values differ.
+Nur einer der beiden Dateiindizes ist umgestellt.	Only one of the two file indices has been switched.
+Rage-Figur ist nicht Millenia, aber der Dateiindex ist nicht fixiert.	Rage character is not Millenia, but the file index is not fixed.
+Datei zu kurz	file too short
+kein GBIX-Kopf an der erwarteten Stelle	no GBIX header at the expected position
+unerwarteter GBIX-Wert 0x{0}	unexpected GBIX value 0x{0}
+{0} zeigt auf den Porträt-Platz von Figur {1}.	{0} points to the portrait slot of character {1}.
+Party-Datei fehlt oder ist gesperrt: Das Rage-Gesicht landet weiter auf Millenias Porträt-Platz.	Party file missing or locked: the Rage face still lands on Millenia's portrait slot.
+{0}: unerwartete Größe {1}x{2}, ignoriert.	{0}: unexpected size {1}x{2}, ignored.
+Kampfporträt von {0} fehlt.	Battle portrait of {0} is missing.
+Figur wählen, dann auf ein Bild klicken. Rahmen, transparenter Rand und Füllflächen bleiben wie im Original, nur das Gesicht wird ersetzt.	Choose a character, then click an image. Frame, transparent border and fill areas stay as in the original; only the face is replaced.
+Menü	Menu
+Dialog (neutral)	Dialogue (neutral)
+Dialog	Dialogue
+Kampf	Battle
+Kampf groß	Battle, large
+title_data. Dass das Spiel diese Bilder im Hauptmenü zeigt, ist aus Größe und Ordner abgeleitet, nicht im Spiel geprüft.	title_data. That the game shows these images in the main menu is inferred from size and folder, not verified in the game.
+Neutrales Gesicht in Textboxen. Alle Kopien in f_face_g werden gemeinsam geändert.	Neutral face in text boxes. All copies in f_face_g are changed together.
+Kampfporträt mit Rahmen (btl_sys1_{0}). Während der Rage zeigt das Spiel an dieser Stelle das Rage-Gesicht.	Battle portrait with frame (btl_sys1_{0}). During Rage the game shows the Rage face in this spot.
+btl_sys1_{0}, ohne Rahmen. Wo das Spiel es zeigt, ist nicht belegt.	btl_sys1_{0}, without frame. Where the game shows it is not documented.
+Rage-Gesicht (Original)	Rage face (original)
+Nach der Rage (Original)	After Rage (original)
+1 Datei	1 file
+{0} Dateien	{0} files
+Sonstige	Other
+Prinz Roan	Prince Roan
+Ryudo	Ryudo
+Elena	Elena
+Millenia	Millenia
+Roan	Roan
+Tio	Tio
+Mareg	Mareg
+Bild wählen ...	Choose image ...
+Bild wählen	Choose image
+Klicken, um ein Bild zu wählen	Click to choose an image
+{0}: auf Original zurückgesetzt.	{0}: reset to original.
+Zielplatz: {0}.	Target: {0}.
+Rahmen und transparenter Rand bleiben, das Bild füllt die Fläche innerhalb des Rahmens.	Frame and transparent border stay; the image fills the area inside the frame.
+Füllfläche und Rand bleiben, das Bild füllt den Inhaltsbereich.	Fill area and border stay; the image fills the content area.
+{0} · {1}: {2} gesetzt ({3} Datei(en)). Noch nicht gespeichert (Strg+S).	{0} · {1}: {2} set ({3} file(s)). Not saved yet (Ctrl+S).
+Bild	Image
+Datei nicht gefunden	File not found
+nicht vorhanden	not available
+geändert, ungespeichert	changed, unsaved
+eigenes Bild, gespeichert	custom image, saved
+Links ein Bild wählen	Choose an image on the left
+Figur:	Character:
+Alle	All
+Eigene Datei (PNG, JPG, BMP) ...	Custom file (PNG, JPG, BMP) ...
+Quellen kommen aus dem Backup, eigene Änderungen werden also nicht weitergereicht.	Sources come from the backup, so your own changes are not passed on.
+So landet es im Spiel	How it will look in the game
+Passt das Seitenverhältnis nicht, wird mittig beschnitten.	If the aspect ratio does not match, the image is cropped around the center.
+Abbrechen	Cancel
+Bilder	Images
+Alle Dateien	All files
+Bild ist zu klein ({0}×{1}).	Image is too small ({0}×{1}).
+Eigene Datei	Custom file
+Bild konnte nicht gelesen werden:	Image could not be read:
+Tabellenansicht	Table view
+{0} = {1}. Noch nicht gespeichert (Strg+S).	{0} = {1}. Not saved yet (Ctrl+S).
+Grundwerte	Base stats
+Belohnungen	Rewards
+Resistenzen	Resistances
+Angriffe	Attacks
+Angriff wählen:	Choose attack:
+Sieg und Level-up	Victory and level-up
+sys\\result_{0}.dds. Lachendes Gesicht im Ergebnisfenster nach dem Kampf, z. B. beim Level-up.	sys\\result_{0}.dds. Laughing face in the results window after battle, e.g. on level-up.
+Allgemein	General
+Ausrüstung	Equipment
+Verwendung	Use
+Werte	Stats
+KI	AI
+Stufe	Level
+Stufe {0}	Level {0}
+Angriff	Attack
+Angriff {0}: {1}	Attack {0}: {1}
+Move	Move
+Skill	Skill
+Manaei	Mana Egg
+Skillbuch	Skill Book
+Set	Set
+Item	Item
+Name	Name
+Beschreibung	Description
+Eintragstyp	Entry type
+Symbol	Icon
+Preis	Price
+Zeiger Ausrüstung	Equipment pointer
+Zeiger Verwendung	Usage pointer
+ID	ID
+Träger	Wearer
+Stärke	Strength
+Vitalität	Vitality
+Aktion	Action
+Bewegung	Movement
+Wirksam gegen	Effective against
+Affinität {0}	{0} affinity
+Zustandsschutz	Status protection
+Zustand Chance	Status chance
+Bonus {0} %	{0} bonus %
+Spezialeffekt	Special effect
+Zielwirkung	Target effect
+Zieltyp	Target type
+Kraft	Power
+Reichweite	Range
+Wirkzeit	Cast time
+Wirkzeit Stufe {0}	Cast time level {0}
+Erholzeit	Recovery time
+Animation	Animation
+IP-Schaden	IP damage
+IP-Cancel-Schaden	IP cancel damage
+Rückstoß	Knockback
+Element	Element
+Elementstärke	Element strength
+Zustände	Status effects
+Mod. Angriff	Mod. attack
+Mod. Abwehr	Mod. defense
+Mod. Aktion	Mod. action
+Mod. Bewegung	Mod. movement
+Bruchchance	Break chance
+Spezial	Special
+Kosten	Cost
+Niederwerfen (0/1)	Knockdown (0/1)
+Münzkosten Stufe {0}	Coin cost level {0}
+Multiplikator	Multiplier
+Kostentyp {0}	Cost type {0}
+Basis {0}	Base {0}
+Zauber {0}: {1}	Spell {0}: {1}
+Skill {0}: {1}	Skill {0}: {1}
+Technik {0}: {1}	Special move {0}: {1}
+KI {0}: {1}	AI {0}: {1}
+Move-Index	Move index
+Skill-Index	Skill index
+Startstufe	Starting level
+Benötigte Stufe	Required level
+Story-Flag	Story flag
+Unbekannt	Unknown
+Unbekannt @0x{0}	Unknown @0x{0}
+Erfahrung	Experience
+{0} (Item-Index)	{0} (item index)
+Waffe	Weapon
+Rüstung	Armor
+Kopf	Headgear
+Füße	Footwear
+Accessoire	Accessory
+Ausdauer	Stamina
+IP-Betäubung	IP stun
+IP-Cancel-Betäubung	IP cancel stun
+IP-Betäubung Dauer	IP stun duration
+IP-Cancel-Betäubung Dauer	IP cancel stun duration
+SP-Regen Combo	SP regen combo
+SP-Regen Kritisch	SP regen critical
+SP-Regen Treffer	SP regen hit
+Ausweichen stehend	Evasion (standing)
+Ausweichen in Bewegung	Evasion (moving)
+Rückstoß-Resistenz	Knockback resistance
+Zustandserholung	Status recovery
+TDMG	TDMG
+THEAL	THEAL
+Größe	Size
++ {0}	+ {0}
+Skill-Slot	Skill slot
+Magie	Magic
+Mentalität	Mentality
+HP	HP
+MP	MP
+SP	SP
+Typ {0}	Type {0}
+Agilität	Agility
+Tempo	Speed
+Resistenz {0}	{0} resistance
+Zustandsimmunität	Status immunity
+Flucht verboten (0/1)	Escape forbidden (0/1)
+Skill-Münzen	Special Coins
+Magie-Münzen	Magic Coins
+Gold	Gold
+Drop {0} (Item-Index)	Drop {0} (item index)
+Drop {0} Chance	Drop {0} chance
+Bedingung	Condition
+Chance Angriff {0}	Attack {0} chance
+AD	AD
+Normaler Angriff (0/1)	Normal attack (0/1)
+Distanz	Distance
+Treffsicherheit	Accuracy
+Feuer	Fire
+Wind	Wind
+Erde	Earth
+Blitz	Lightning
+Blizzard	Blizzard
+Wasser	Water
+Explosion	Explosion
+Wald	Forest
+Gift	Poison
+Schlaf	Sleep
+Lähmung	Paralysis
+Verwirrung	Confusion
+Seuche	Plague
+Magieblock	Magic block
+Bewegungsblock	Move block
+Tod	Death
+Kurve und Multiplikator ...	Curve and multiplier ...
+Kurve und Multiplikator	Curve and multiplier
+Statt jede Stufe einzeln zu ändern: Zuwachs je Stufe mit einem Faktor multiplizieren. Gleicher Wert bei Anfang und Ende = fester Multiplikator. Unterschiedliche Werte = Kurve, z. B. 100 % bis 150 %: am Anfang normal, später immer schneller.	Instead of editing every level: multiply the gain per level by a factor. Same value at start and end = fixed multiplier. Different values = curve, e.g. 100 % to 150 %: normal at first, then faster and faster.
+Stufenbereich	Level range
+von Stufe	from level
+bis Stufe	to level
+Faktor in Prozent	Factor in percent
+am Anfang	at start
+am Ende	at end
+Benötigte Erfahrung	Required experience
+Wirkt auf alle Kopien der Tabelle (xls_data, sys, sys_hardmode). 0 bleibt 0. Noch nicht gespeichert, bis Strg+S.	Applies to all copies of the table (xls_data, sys, sys_hardmode). 0 stays 0. Not saved until Ctrl+S.
+Bitte mindestens eine Figur und einen Wert wählen.	Please choose at least one character and one stat.
+Die Endstufe muss größer oder gleich der Anfangsstufe sein.	The end level must be greater than or equal to the start level.
+Stufe {0}: {1} → {2}	Level {0}: {1} → {2}
+Vorschau {0}, {1}:	Preview {0}, {1}:
+(leer)	(empty)
+Ausrüstung zum Start	Starting equipment
+Bis Stufe 99: +{0} HP, +{1} MP	Up to level 99: +{0} HP, +{1} MP
+Boni auf Werte	Stat bonuses
+Einzelne Stufe	Single level
+Element-Boni	Element bonuses
+Elemente	Elements
+Erst bei einem Eintrag "Werte kopieren" klicken.	First click "Copy values" on an entry.
+Experte	Expert
+Experte: {0} weitere Felder	Expert: {0} more fields
+davon {0} unbekannt	{0} of them unknown
+Kein Backup vorhanden, kein Original zum Zurücksetzen.	No backup available, no original to reset to.
+Kosten {0}	Cost {0}
+Leere Plätze zeigen	Show empty slots
+Lernen (Münzkosten)	Learning (coin costs)
+Resistenzen und Schutz	Resistances and protection
+Schützt vor	Protects against
+Stufe {0}  ·  HP {1}	Level {0}  ·  HP {1}
+Stufe:	Level:
+Summe über alle Stufen	Total over all levels
+Technische Felder und Felder, deren Bedeutung niemand belegt hat. Nur ändern, wenn du weißt, was sie bewirken. Zeiger und IDs sind gesperrt.	Technical fields and fields whose meaning nobody has documented. Only change them if you know what they do. Pointers and IDs are locked.
+Werte zu Spielbeginn bzw. beim Beitritt	Values at game start or when joining the party
+Zustände und Werte	Status effects and stats
+Zuwachs je Stufe. Mit „Kurve und Multiplikator“ änderst du viele Stufen auf einmal.	Gain per level. Use "Curve and multiplier" to change many levels at once.
+gegenüber Original verändert	changed from original
+ja	yes
+nein	no
+{0} G	{0} G
+{0} Kopie(n) mitgezogen.	Copies updated as well: {0}.
+{0} Kopie(n) wichen schon vorher ab und bleiben unverändert.	Copies that already differed and stay unchanged: {0}.
+{0} Skills	{0} skills
+{0} Techniken	{0} moves
+{0} Werte auf Original zurückgesetzt.	{0} values reset to original.
+{0} Werte von "{1}" eingefügt.	{0} values from "{1}" pasted.
+{0} Zauber	{0} spells
+{0} von {1} Plätzen belegt	{0} of {1} slots used
+{0}: {1} → {2}.	{0}: {1} → {2}.
+Zauber	Spell
+Technik	Move
+Drop-Chancen (höchstens 100)	Drop chances (max. 100)
+Grundwerte auf Stufe 1	Base stats at level 1
+Das ist Stufe 1 aus Level-ups (tb_lvup.bin). Eine Änderung hier ändert auch die Seite Level-ups.	This is level 1 from Level-ups (tb_lvup.bin). A change here also changes the Level-ups page.
+Bonus der Startausrüstung	Starting equipment bonus
+Auslösen laut Exe nur, wenn {0} selbst im Kampf ist, genug Wut gesammelt hat (Treffer einstecken) und ein Zufallswurf gelingt. Ist {0} nicht in der Gruppe, passiert nichts.	According to the exe it only triggers when {0} is in the battle, has built up enough rage (by taking hits) and a random roll succeeds. If {0} is not in the party, nothing happens.
+Wut-Schwelle	Rage threshold
+100 (Original)	100 (original)
+0 (beim nächsten Auslöser)	0 (at the next trigger)
+Wut steigt bei Treffern auf Millenia um 2 bis 7, bei einigen Kampfereignissen um 5 bis 50. Erst ab der Schwelle setzt ein Treffer die Auslöse-Chance. Die Wut bleibt über Kämpfe und Spielstände erhalten und fällt erst nach einer Rage auf 0. Liegt sie schon über der Schwelle, ändert die Schwelle bis zur nächsten Rage nichts.	Rage rises by 2 to 7 when Millenia is hit, by 5 to 50 at some battle events. Only from the threshold on does a hit set the trigger chance. Rage carries over between battles and saves and drops to 0 only after a Rage. If it is already above the threshold, the threshold changes nothing until the next Rage.
+Wut bei Kampfbeginn	Rage at battle start
+Aus dem Spielstand (Original)	From the save (original)
+Leer (0): Schwelle gilt in jedem Kampf	Empty (0): threshold applies every battle
+Voll (100): Rage ab dem ersten Treffer möglich	Full (100): Rage possible from the first hit
+Auslöse-Chance	Trigger chance
+20 bis 50 % (Original)	20 to 50 % (original)
+100 % (sicher)	100 % (certain)
+Gewürfelt wird einmal je Auslöse-Ereignis (Treffer auf Millenia), sobald die Wut die Schwelle erreicht hat. Voll + 100 % = Rage beim ersten Treffer jedes Kampfes, auch nach New Valmar.	One roll per trigger event (a hit on Millenia) once rage has reached the threshold. Full + 100 % = Rage on the first hit of every battle, also after New Valmar.
+Auslöse-Chance bei Datei 0x{0}	Trigger chance at file 0x{0}
+Konstanten der Auslöse-Chance	Trigger chance constants
+Die vier Stellen der Auslöse-Chance haben verschiedene Werte.	The four trigger chance locations have different values.
+Konstanten der Wut-Schwelle	Rage threshold constants
+Wut-Schwelle bei Datei 0x{0}	Rage threshold at file 0x{0}
+Die vier Stellen der Wut-Schwelle haben verschiedene Werte.	The four rage threshold locations have different values.
+Rage-Sperre (Lesen) bei Datei 0x{0}	Rage lock (read) at file 0x{0}
+Die fünf Lesestellen der Rage-Sperre sind uneinheitlich.	The five read locations of the rage lock are inconsistent.
+Rage-Sperre auf den neuen Stand gebracht (alle fünf Lesestellen umgangen). Speichern mit Strg+S.	Rage lock brought up to date (all five read locations bypassed). Save with Ctrl+S.
+Rage auf Millenia und den neuen Stand gebracht. Speichern mit Strg+S.	Rage set to Millenia and brought up to date. Save with Ctrl+S.
+Millenias Rage: an/aus, Wut-Schwelle, Auslöse-Chance, eigene Rage-Gesichter	Millenia's Rage: on/off, rage threshold, trigger chance, custom Rage faces
+Wut fällt nie unter 1	Rage never drops below 1
+Zusatz zu jeder Auswahl oben: Die Wut aus dem letzten Kampf bleibt erhalten, ist zu Kampfbeginn aber mindestens 1 und fällt nach einer Rage auf 1 statt auf 0.	Works with every choice above: rage from the last battle is kept, but is at least 1 at battle start and drops to 1 instead of 0 after a Rage.
+Mindestwut bei Datei 0x{0}	Minimum rage at file 0x{0}
+Die Stellen der Mindestwut sind nur teilweise umgestellt.	The minimum rage locations are only partly changed.
+... und {0} weitere	... and {0} more
+Aktueller Stand vorher gesichert: {0}	Current state saved first: {0}
+Es wurde nichts wiederhergestellt.	Nothing was restored.
+Fehler beim Zurückspielen:	Error while rolling back:
+Jeder Zwischenstand enthält die Dateien so, wie sie VOR dem jeweiligen Speichern waren. Zurückspielen stellt genau diesen Stand wieder her.	Each snapshot holds the files as they were BEFORE that save. Rolling back restores exactly that state.
+NICHT geschrieben (Zwischenstand konnte nicht gesichert werden)	NOT written (snapshot could not be saved)
+Noch keine Zwischenstände vorhanden.	No snapshots yet.
+Ordner	Folder
+Ordner öffnen	Open folder
+Schließen	Close
+Ungespeicherte Änderungen an {0} dieser Datei(en) gehen verloren.	Unsaved changes to {0} of these file(s) will be lost.
+Zurückgespielt: {0}	Rolled back: {0}
+Zurückspielen	Roll back
+Zwischenstand fehlerhaft geschrieben: {0}	Snapshot written incorrectly: {0}
+Zwischenstand gesichert: {0}	Snapshot saved: {0}
+Zwischenstand konnte nicht gesichert werden:	Snapshot could not be saved:
+Zwischenstand {0} zurückspielen ({1} Datei(en))?	Roll back snapshot {0} ({1} file(s))?
+Zwischenstände	Snapshots
+Zwischenstände an: Vor jedem Speichern wird der bisherige Stand gesichert.	Snapshots on: the previous state is saved before every save.
+Zwischenstände ansehen und zurückspielen ...	View and roll back snapshots ...
+Zwischenstände aus.	Snapshots off.
+Zwischenstände sichern (vor jedem Speichern, die letzten 20)	Keep snapshots (before every save, last 20)
+vor dem Speichern	before saving
+vor dem Wiederherstellen des Originals	before restoring the original
+vor dem Zurückspielen von {0}	before rolling back {0}
+Übersprungen (Datei fehlt im Zwischenstand)	Skipped (file missing in snapshot)
+Übersprungen (Datei nicht im Spielordner geladen)	Skipped (file not loaded from game folder)
+Übersprungen (Datei wurde außerhalb des Tools geändert, bitte neu laden)	Skipped (file was changed outside the tool, please reload)
+Übersprungen (Dateigröße passt nicht)	Skipped (file size does not match)
+Übersprungen (Prüfsumme passt nicht)	Skipped (checksum does not match)
+Zeitpunkt	Time
+Dateien	Files
+Anlass	Reason
+Zurückgespielt	Rolled back
+Teilweise zurückgespielt	Partly rolled back
+Hinweis: sys\\btl_sys1_{0}.dds fehlt in deiner Installation. Rahmen für eigene Bilder kommt aus {1}.	Note: sys\\btl_sys1_{0}.dds is missing in your installation. The frame for custom images comes from {1}.
+Millenias Rage-Gesichter. Eigene Bilder werden in Originalgröße (64 × 64 Pixel) ins Spiel geschrieben.	Millenia's rage faces. Custom images are written to the game at original size (64 × 64 pixels).
+Zielplatz: 64 × 64 im Spiel (wie das Original), im Rahmen des Kampfporträts dieser Figur.	Target: 64 × 64 in the game (like the original), inside this character's battle portrait frame.
+Die Rage-Gesichter (party\\c03ang_e und c03ang_s) haben im Spielordner 128 x 128 Pixel. So hat sie das Tool bis Version 0.12.8 geschrieben. Diese Größe kann das Spiel zum Absturz bringen.	The rage faces (party\\c03ang_e and c03ang_s) in the game folder are 128 x 128 pixels. The tool wrote them like that up to version 0.12.8. This size can crash the game.
+Das Tool hat sie auf die Originalgröße 64 x 64 umgestellt. Deine eigenen Bilder bleiben erhalten.	The tool has converted them to the original size of 64 x 64. Your custom images are kept.
+Jetzt Strg+S drücken, dann startet das Spiel wieder.	Now press Ctrl+S, then the game will start again.
+HD Remaster	HD Remaster
+Anniversary Edition	Anniversary Edition
+Automatisch	Automatic
+automatisch erkannt	detected automatically
+Automatisch (erkannt: {0})	Automatic (detected: {0})
+Spielversion	Game version
+HD Remaster liest content\\data\\afs, Anniversary Edition liest data\\afs. Eigener Backup-Ordner je Version.	HD Remaster reads content\\data\\afs, Anniversary Edition reads data\\afs. Separate backup folder per version.
+Eingestellte Spielversion: {0}. Auf der Startseite lässt sie sich umstellen.	Selected game version: {0}. You can change it on the home page.
+Hinweis: Es gibt sowohl content\\data\\afs als auch data\\afs. Bearbeitet wird {0}.	Note: both content\\data\\afs and data\\afs exist. Editing {0}.
+Die Exe passt nicht zur eingestellten Spielversion ({0}). Auf der Startseite umstellen.	The exe does not match the selected game version ({0}). Change it on the home page.
+Keine Exe der Anniversary Edition (Build 2015).	Not an Anniversary Edition exe (2015 build).
+Anniversary Edition: Avatare und Rage-Gesichter sind nicht bearbeitbar (Porträts DXT5-komprimiert). Alle anderen Seiten und die Rage-Einstellungen funktionieren.	Anniversary Edition: avatars and rage faces cannot be edited (portraits are DXT5-compressed). All other pages and the rage settings work.
+Im Kampf benutzbar machen	Make usable in battle
+Nur Ausrüstung mit eigenem Verwendungs-Block kann im Kampf benutzt werden (eigene Attacke). item.bin hat keinen freien Platz. Frei sind nur die Blöcke der zwei Entwickler-Items 001 "Date 8/16" und 002 "Debug Item", die man im Spiel nicht bekommt.	Only equipment with its own usage block can be used in battle (its own attack). item.bin has no free space. The only free blocks belong to the two developer items 001 "Date 8/16" and 002 "Debug Item", which cannot be obtained in the game.
+Noch frei: {0} von 2.	Still free: {0} of 2.
+Verwendung hinzufügen	Add usage
+Diese Verwendung benutzt den Block von {0}. Startwert war die Verwendung der ersten Waffe mit eigener Verwendung, oben frei änderbar.	This usage uses the block of {0}. It started as a copy of the first weapon with its own usage and can be changed freely above.
+Verwendung wieder entfernen	Remove usage again
+item.bin ist gesperrt.	item.bin is locked.
+Dieses Item kann keine Verwendung bekommen (keine Ausrüstung oder schon vorhanden).	This item cannot get a usage (not equipment, or it already has one).
+Kein freier Block mehr. Beide Debug-Blöcke sind vergeben.	No free block left. Both debug blocks are in use.
+Keine Vorlage für die Verwendung gefunden.	No template found for the usage.
+Verwendung hinzugefügt (Block von {0}). Noch {1} frei. Noch nicht gespeichert (Strg+S).	Usage added (block of {0}). {1} still free. Not saved yet (Ctrl+S).
+Dieses Item benutzt keinen Debug-Block.	This item does not use a debug block.
+Verwendung entfernt, Block an {0} zurückgegeben. Noch nicht gespeichert (Strg+S).	Usage removed, block returned to {0}. Not saved yet (Ctrl+S).
