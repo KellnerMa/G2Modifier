@@ -25,7 +25,7 @@ namespace G2Modifier.UI
             switch (r.File.FormatKey)
             {
                 case "ITEM.BIN": case "SK_PARAM.BIN": case "ENEMY": return FixedText.Decode(d, b, 18);
-                case "MS_PARAM.BIN": return FixedText.Decode(d, b + 2, 18);
+                case "MS_PARAM.BIN": return r.ViewFormat(0, Formats.Move.Get("Name"));   // Hard-Mode-Platzhalter: Name aus sys
             }
             string l = r.Label ?? "";
             int i = 0;
@@ -53,7 +53,7 @@ namespace G2Modifier.UI
         {
             int c = CharOf(r);
             if (c > 0) return GameArt.Portrait(c, 34);
-            if (r.File.FormatKey == "MS_PARAM.BIN") return GameArt.MoveIcon(r.File.Data[r.Sections[0].Base + 1]);
+            if (r.File.FormatKey == "MS_PARAM.BIN") { var f = Formats.Move.Get("Icon"); return GameArt.MoveIcon(r.ViewData(0, f)[r.ViewAbs(0, f)]); }
             return null;
         }
 
@@ -83,7 +83,8 @@ namespace G2Modifier.UI
                     string type = t < G2DataGuiLabels.ItemEntries.Length ? L.T(G2DataGuiLabels.ItemEntries[t]) : L.T("Typ") + " " + t;
                     return type + "  ·  " + L.F("{0} G", Bin.S32(d, b + 64));
                 }
-                case "MS_PARAM.BIN": return L.F("Kosten {0}", Bin.S16(d, b + 20)) + "  ·  " + FixedText.Decode(d, b + 68, 40);
+                case "MS_PARAM.BIN":   // ViewFormat: bei Hard-Mode-Platzhaltern der Wert der Normal-Kopie
+                    return L.F("Kosten {0}", r.ViewFormat(0, Formats.Move.Get("Stats.Cost"))) + "  ·  " + r.ViewFormat(0, Formats.Move.Get("Description"));
                 case "SK_PARAM.BIN": return FixedText.Decode(d, b + 64, 40);
                 case "TB_MAGIC.BIN": return L.F("{0} Zauber", Used(r, 18, 4));
                 case "TB_SKILL.BIN": return L.F("{0} Skills", Used(r, 6, 4));
@@ -218,7 +219,8 @@ namespace G2Modifier.UI
         static void Move(RecordView v, Record r)
         {
             int b = r.Sections[0].Base;
-            v.Header(FixedText.Decode(r.File.Data, b + 68, 40), GameArt.MoveIcon(r.File.Data[b + 1]), () => Name(r));
+            var icon = Formats.Move.Get("Icon");
+            v.Header(r.ViewFormat(0, Formats.Move.Get("Description")), GameArt.MoveIcon(r.ViewData(0, icon)[r.ViewAbs(0, icon)]), () => Name(r));
             var c = v.NewCard(L.T("Grundwerte"));
             c.Field(0, "Name", 240);
             c.Field(0, "Description", 440);

@@ -17,7 +17,7 @@ namespace G2Modifier.UI
     public class MainForm : Form
     {
         public const string AppName = "Grandia II Modifier";
-        public const string Version = "0.13.2";
+        public const string Version = "0.13.3";
         const string DefaultSteamPath = @"C:\Program Files (x86)\Steam\steamapps\common\Grandia II Anniversary Edition";
 
         readonly Settings settings = Settings.Load();

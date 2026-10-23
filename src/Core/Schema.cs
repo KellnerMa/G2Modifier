@@ -242,7 +242,69 @@ namespace G2Modifier.Core
         public string Group;   // z. B. Ordner oder Typ
         public int Index;
         public List<Section> Sections = new List<Section>();
+        /// <summary>
+        /// Nur sys_hardmode\ms_param.bin: Der Datensatz enthaelt Platzhalter (Bytepaare 30 F0) statt eigener Werte, so im Original.
+        /// Diese Felder zeigen den Wert der Normal-Kopie (TextFrom = gleicher Key in sys). Wer den Wert aendert, schreibt einen echten
+        /// Wert in die Hard-Mode-Datei (WriteValue). Unveraenderte Platzhalter bleiben bytegenau erhalten.
+        /// </summary>
+        public bool Placeholders;
+        public Record TextFrom;
         public override string ToString() { return Label; }
+
+        static bool PlaceholderAt(byte[] d, int recBase, FieldDef f)
+        {
+            int abs = recBase + f.Offset;
+            if (f.IsText) return Bin.IsFillerText(d, abs, f.Length);
+            // Animation: im Original 64-mal oberes Byte F0 als Markierung, unteres Byte = Normal-Wert (Normal: oberes Byte 00)
+            if (f.SourceName == "Stats.Animation" && f.Size == 2 && d[abs + 1] == 0xF0 && d[abs] != 0x30) return true;
+            for (int i = f.Offset; i < f.Offset + f.Size; i++)
+            {
+                int pair = recBase + (i & ~1);
+                if (pair + 1 >= d.Length || d[pair] != 0x30 || d[pair + 1] != 0xF0) return false;
+            }
+            return true;
+        }
+
+        bool HasNormal(int si) { return Placeholders && TextFrom != null && si >= 0 && si < Sections.Count && si < TextFrom.Sections.Count; }
+
+        /// <summary>Feld uebernimmt gerade den Wert der Normal-Kopie (Platzhalter in dieser Datei).</summary>
+        public bool UsesNormal(int si, FieldDef f) { return HasNormal(si) && PlaceholderAt(File.Data, Sections[si].Base, f); }
+
+        /// <summary>Puffer und Position, aus denen das Feld angezeigt wird (eigene Daten oder Normal-Kopie).</summary>
+        public byte[] ViewData(int si, FieldDef f) { return UsesNormal(si, f) ? TextFrom.File.Data : File.Data; }
+        public int ViewAbs(int si, FieldDef f) { return (UsesNormal(si, f) ? TextFrom.Sections[si].Base : Sections[si].Base) + f.Offset; }
+        public string ViewFormat(int si, FieldDef f) { return f.Format(ViewData(si, f), ViewAbs(si, f)); }
+
+        /// <summary>Original (Backup) so angezeigt wie ViewData: Platzhalter im Backup = Original der Normal-Kopie. null ohne Backup.</summary>
+        public byte[] ViewOriginal(int si, FieldDef f, out int abs)
+        {
+            abs = Sections[si].Base + f.Offset;
+            if (File.Original == null) return null;
+            if (HasNormal(si) && PlaceholderAt(File.Original, Sections[si].Base, f))
+            {
+                abs = TextFrom.Sections[si].Base + f.Offset;
+                return TextFrom.File.Original ?? TextFrom.File.Data;
+            }
+            return File.Original;
+        }
+
+        /// <summary>
+        /// Eingabe schreiben. Bei Platzhaltern wird zuerst der Normal-Wert fuer alle beruehrten 30-F0-Paare eingesetzt
+        /// (das Nachbarfeld im selben Paar zeigt danach weiter seinen Wert), dann die Eingabe. Fehlertext oder null.
+        /// </summary>
+        public string WriteValue(int si, FieldDef f, string input)
+        {
+            int b = Sections[si].Base, abs = b + f.Offset;
+            if (!UsesNormal(si, f) || f.IsText) return f.TryWrite(File.Data, abs, input);
+            int tb = TextFrom.Sections[si].Base;
+            int from = f.Offset & ~1, to = (f.Offset + f.Size + 1) & ~1;   // ganze Paare
+            var save = new byte[to - from];
+            Buffer.BlockCopy(File.Data, b + from, save, 0, save.Length);
+            Buffer.BlockCopy(TextFrom.File.Data, tb + from, File.Data, b + from, save.Length);
+            string err = f.TryWrite(File.Data, abs, input);
+            if (err != null) Buffer.BlockCopy(save, 0, File.Data, b + from, save.Length);
+            return err;
+        }
     }
 
     /// <summary>Feste Textfelder: Single-Byte ASCII, Polsterung mit 0x00 oder Leerzeichen.

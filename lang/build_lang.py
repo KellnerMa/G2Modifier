@@ -246,6 +246,15 @@ t("Unbekanntes Format {0}", "Unknown format {0}", "Format inconnu {0}")
 t("(ohne Namen)", "(no name)", "(sans nom)")
 t("{0} von {1} Namen enthalten keine lesbaren Zeichen. Das Layout passt nicht zu dieser Datei.", "{0} of {1} names contain no readable characters. The layout does not match this file.", "{0} noms sur {1} ne contiennent aucun caractère lisible. La structure ne correspond pas à ce fichier.")
 t("{0} Namen enthalten Sonderbytes (werden als {{XX}} angezeigt und unverändert erhalten).", "{0} names contain special bytes (shown as {{XX}} and kept unchanged).", "{0} noms contiennent des octets spéciaux (affichés sous la forme {{XX}} et conservés tels quels).")
+t("{0} Namen sind Platzhalter (Bytes 30 F0). So liefert das Spiel diese Kopie aus, die Texte kommen aus einer anderen Kopie. Angezeigt wird der Name aus der ersten Kopie.",
+  "{0} names are placeholders (bytes 30 F0). The game ships this copy like that, the texts come from another copy. The name from the first copy is shown.",
+  "{0} noms sont des espaces réservés (octets 30 F0). Le jeu livre cette copie ainsi, les textes viennent d'une autre copie. Le nom de la première copie est affiché.")
+t("{0} Einträge übernehmen im Original Werte aus der Normal-Fassung (Bytes 30 F0). Das Tool zeigt dort die Normal-Werte, eine Änderung schreibt einen eigenen Hard-Mode-Wert.",
+  "{0} entries take values from the normal version in the original file (bytes 30 F0). The tool shows the normal values there, a change writes a separate hard mode value.",
+  "{0} entrées reprennent dans le fichier d'origine les valeurs de la version normale (octets 30 F0). L'outil y affiche les valeurs normales, une modification écrit une valeur propre au mode difficile.")
+t("(Platzhalter)", "(placeholder)", "(espace réservé)")
+t("(Text aus {0})", "(text from {0})", "(texte de {0})")
+t("(Platzhalter, Text kommt aus einer anderen Kopie)", "(placeholder, text comes from another copy)", "(espace réservé, le texte vient d'une autre copie)")
 t("Dateigröße {0} Bytes, erwartet {1} ({2} x {3}). Datei gesperrt.", "File size {0} bytes, expected {1} ({2} x {3}). File locked.", "Taille du fichier {0} octets, attendu {1} ({2} x {3}). Fichier verrouillé.")
 t("Datei kleiner als die Item-Tabelle ({0} < {1} Bytes). Datei gesperrt.", "File smaller than the item table ({0} < {1} bytes). File locked.", "Fichier plus petit que la table des objets ({0} < {1} octets). Fichier verrouillé.")
 t("Item {0}: Zeiger Ausrüstung 0x{1} zeigt außerhalb des Datenbereichs.", "Item {0}: equipment pointer 0x{1} points outside the data area.", "Objet {0} : le pointeur d'équipement 0x{1} pointe hors de la zone de données.")

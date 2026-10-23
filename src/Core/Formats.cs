@@ -321,6 +321,7 @@ namespace G2Modifier.Core
 
         static string NameAt(GameFile f, int abs, int len)
         {
+            if (Bin.IsFillerText(f.Data, abs, len)) return L.T("(Platzhalter)");
             string n = FixedText.Decode(f.Data, abs, len);
             return n.Length == 0 ? L.T("(ohne Namen)") : n;
         }
@@ -328,9 +329,15 @@ namespace G2Modifier.Core
         static void CheckTextShare(GameFile f, List<Record> recs, int nameOffsetInFirstSection, int len)
         {
             if (recs.Count == 0) return;
-            int bad = 0;
+            int bad = 0, filler = 0;
             foreach (var r in recs)
-                if (!Bin.IsPrintableText(f.Data, r.Sections[0].Base + nameOffsetInFirstSection, len)) bad++;
+            {
+                int o = r.Sections[0].Base + nameOffsetInFirstSection;
+                if (Bin.IsFillerText(f.Data, o, len)) filler++;
+                else if (!Bin.IsPrintableText(f.Data, o, len)) bad++;
+            }
+            if (filler > 0)
+                f.Notes.Add(L.F("{0} Einträge übernehmen im Original Werte aus der Normal-Fassung (Bytes 30 F0). Das Tool zeigt dort die Normal-Werte, eine Änderung schreibt einen eigenen Hard-Mode-Wert.", filler));
             if (bad * 4 > recs.Count)
                 f.Errors.Add(L.F("{0} von {1} Namen enthalten keine lesbaren Zeichen. Das Layout passt nicht zu dieser Datei.", bad, recs.Count));
             else if (bad > 0)

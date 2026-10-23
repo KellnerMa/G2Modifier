@@ -1,4 +1,4 @@
-﻿GRANDIA II MODIFIER 0.13.2
+﻿GRANDIA II MODIFIER 0.13.3
 Editor für Grandia II HD Remaster / Anniversary Edition (Steam, PC)
 Aufbau nach dem Schema des Spira Modifier (FFX)
 
@@ -18,6 +18,25 @@ OBERFLÄCHE (NEU IN 0.11.0)
   Unten erscheint eine Speicherleiste, sobald etwas ungespeichert ist: "Speichern" (Strg+S) oder "Verwerfen".
   Ein Punkt in der Seitenleiste zeigt, auf welcher Seite ungespeicherte Änderungen liegen.
   Die Suche findet Gegenstände, Moves, Gegner, Figuren und Seiten und springt direkt zum Eintrag.
+
+NEU IN 0.13.3: FEHLERBEHEBUNGEN (beide Spielversionen)
+  - Item- und Move-Beschreibungen kamen im Spiel nicht an. Grund: Jede Tabelle liegt dreifach vor (sys, sys_hardmode, xls_data).
+    Das Spiel zeigt die Texte aus sys/sys_hardmode, xls_data hat bei 90 Item-Beschreibungen eine ältere Fassung
+    (z. B. "Revives character |right to COM" statt "Revives fallen character right to COM"). Das Tool zeigte xls_data
+    und zog Änderungen nur in Kopien mit gleichem alten Text mit. Jetzt: sys ist die erste Kopie, Texte gehen in alle Kopien.
+    Zahlen werden weiter nur mitgezogen, wenn die Kopie vorher denselben Wert hatte (Hard-Mode-Werte bleiben eigenständig).
+  - sys_hardmode\ms_param.bin war "gesperrt". Die Originaldatei enthält statt Namen und Beschreibungen Platzhalter
+    (Bytes 30 F0), in HD Remaster und Anniversary Edition identisch. Die Zahlenwerte sind echte Hard-Mode-Werte.
+    Die Platzhalter bedeuten "wie Normal" (auch das obere Byte F0 bei 64 Animationen, unteres Byte = Normal-Wert).
+    Jetzt: Datei gültig, normale Kartenansicht. Jedes solche Feld zeigt den Normal-Wert (Name, Beschreibung, Kosten,
+    Animation ...) und ist normal bearbeitbar. Eine Änderung schreibt einen eigenen Hard-Mode-Wert. Unveränderte Felder
+    bleiben bytegleich, "Auf Original" stellt die Platzhalter exakt wieder her.
+  - Verwerfen in der Kartenansicht: Der zuletzt eingegebene Wert wurde beim Neuaufbau erneut geschrieben
+    (Verwerfen schien wirkungslos). Behoben, betraf alle Tabellen.
+  - build.cmd: wechselt in den eigenen Ordner und meldet klar, wenn der Ordner "src" fehlt
+    (vorher Compilerfehler CS5001 "keine Main-Methode", wenn build.cmd allein heruntergeladen wurde).
+  Geprüft: quellcode\tests\TextCheck.cs an beiden Versionen, dazu SelfTest, LangCheck, UsableCheck, AeRageCheck.
+  NICHT im Spiel getestet: ob geänderte Beschreibungen im Spielmenü erscheinen (nur die Dateien sind geprüft).
 
 NEU IN 0.13.2: ZWEI WEITERE WAFFEN IM KAMPF BENUTZBAR
   Warum nur manche Waffen eine Attacke haben: Im Kampf benutzbar (mit eigener Attacke) ist nur Ausrüstung mit eigenem

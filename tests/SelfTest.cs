@@ -78,8 +78,10 @@ static class SelfTest
         Check(it.Variants[0].Records.Count == 799, "799 Items");
         Check(it.Variants[0].Records[5].Sections.Count == 2 && it.Variants[0].Records[5].Sections[1].Title == "Ausrüstung", "Item 5 Ausrüstung");
         Check(it.Variants[0].Records[6].Sections[1].Title == "Verwendung", "Item 6 Verwendung");
-        Check(it.Variants[1].Files[0].Notes.Any(n => n.Contains("identisch")), "sys identisch erkannt");
-        Check(it.Variants[2].Files[0].Notes.Any(n => n.Contains("weicht")), "sys_hardmode abweichend erkannt");
+        // Reihenfolge seit 0.13.3: sys, sys_hardmode, xls_data (verglichen wird mit sys)
+        Check(it.Variants[0].Name == "sys", "sys ist erste Kopie");
+        Check(it.Variants.First(v => v.Name == "xls_data").Files[0].Notes.Any(n => n.Contains("identisch")), "xls_data identisch mit sys erkannt");
+        Check(it.Variants.First(v => v.Name == "sys_hardmode").Files[0].Notes.Any(n => n.Contains("weicht")), "sys_hardmode abweichend erkannt");
         var sk = ws.Table("SK_PARAM.BIN");
         Check(sk != null && !sk.Variants[0].Valid && sk.Variants[0].Records.Count == 0, "SK_PARAM falsche Größe gesperrt");
         var enemy = ws.Table("ENEMY");

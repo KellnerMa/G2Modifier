@@ -38,7 +38,8 @@ namespace G2Modifier.Core
         public GameFile Exe, AngE, AngS;   // Rage: grandia2.exe und die beiden Party-Dateien mit dem GBIX
         public GameFile AngEFace, AngSFace; // Rage-Gesichter (DDS) waehrend und nach der Rage
 
-        public static readonly string[] BinFolders = { "xls_data", "sys", "sys_hardmode" };
+        // sys zuerst: das Spiel zeigt die Texte aus sys/sys_hardmode, xls_data hat bei vielen Beschreibungen eine aeltere Fassung (z. B. mit "|")
+        public static readonly string[] BinFolders = { "sys", "sys_hardmode", "xls_data" };
         static readonly string[][] BinTables =
         {
             new[] { "ITEM.BIN", "Gegenstände" },
@@ -107,6 +108,7 @@ namespace G2Modifier.Core
                     ti.Variants.Add(v);
                     ws.AllFiles.Add(gf);
                 }
+                BorrowFillerLabels(ti);
                 if (ti.Variants.Count > 0) ws.Tables.Add(ti);
                 else ws.Messages.Add(L.F("{0} wurde in keinem der Ordner {1} gefunden.", t[0], string.Join(", ", BinFolders)));
             }
@@ -139,6 +141,21 @@ namespace G2Modifier.Core
                 if (v.Files.Count > 0) ti.Variants.Add(v);
             }
             return ti;
+        }
+
+        /// <summary>Platzhalter-Namen (sys_hardmode\ms_param.bin) in der Liste durch den Namen aus einer Kopie mit echtem Text ersetzen. Die Datei selbst bleibt unberuehrt.</summary>
+        static void BorrowFillerLabels(TableInfo ti)
+        {
+            string tag = L.T("(Platzhalter)");
+            foreach (var v in ti.Variants)
+                foreach (var r in v.Records.Where(x => x.Label.EndsWith(tag)))
+                {
+                    r.Placeholders = true;
+                    var src = ti.Variants.Where(o => o != v).SelectMany(o => o.Records).FirstOrDefault(o => o.Key == r.Key && !o.Label.EndsWith(tag));
+                    if (src == null) continue;
+                    r.TextFrom = src;
+                    r.Label = src.Label;
+                }
         }
 
         /// <summary>Vergleicht Kopien derselben BIN-Datei und notiert, ob sie identisch sind.</summary>

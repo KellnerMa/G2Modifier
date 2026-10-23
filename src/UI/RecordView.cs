@@ -9,7 +9,8 @@ namespace G2Modifier.UI
 {
     /// <summary>
     /// Schreibt einen Feldwert sofort in den Arbeitsstand (Speichern weiterhin mit Strg+S).
-    /// Kopien derselben BIN-Datei (xls_data/sys/sys_hardmode) werden mitgezogen, wenn sie vorher denselben Wert hatten.
+    /// Kopien derselben BIN-Datei (sys/sys_hardmode/xls_data) werden mitgezogen, wenn sie vorher denselben Wert hatten. Texte immer.
+    /// Hard-Mode-Platzhalter (30 F0) uebernehmen den Normal-Wert und werden dabei nicht ueberschrieben.
     /// </summary>
     public class FieldWriter
     {
@@ -37,13 +38,14 @@ namespace G2Modifier.UI
             info = null;
             var s = r.Sections[si];
             int abs = s.Base + f.Offset;
-            string before = f.Format(r.File.Data, abs);
+            string before = r.ViewFormat(si, f);   // angezeigter Wert (bei Hard-Mode-Platzhaltern der Normal-Wert)
             if (input == before) return null;
-            string shownBefore = Show(f, r.File.Data, abs);
-            string err = f.TryWrite(r.File.Data, abs, input);
+            string shownBefore = Show(f, r.ViewData(si, f), r.ViewAbs(si, f));
+            var undo = (byte[])r.File.Data.Clone();
+            string err = r.WriteValue(si, f, input);
             if (err != null) return err;
             string after = f.Format(r.File.Data, abs);
-            if (after == before) return null;
+            if (after == before) { Buffer.BlockCopy(undo, 0, r.File.Data, 0, undo.Length); return null; }   // gleicher Wert: Platzhalter bleibt
             int synced = 0, skipped = 0;
             if (CanSync && sync())
             {
@@ -52,9 +54,11 @@ namespace G2Modifier.UI
                     if (!v.Valid || v.Records.Contains(r)) continue;
                     var o = v.Records.FirstOrDefault(x => x.Key == r.Key);
                     if (o == null || si >= o.Sections.Count || o.Sections[si].Def != s.Def) continue;
+                    if (o.UsesNormal(si, f)) continue;   // Hard-Mode-Platzhalter: zeigt automatisch den neuen Normal-Wert
                     int oAbs = o.Sections[si].Base + f.Offset;
                     string ov = f.Format(o.File.Data, oAbs);
-                    if (ov == before) { if (f.TryWrite(o.File.Data, oAbs, input) == null) synced++; }
+                    // Texte gehen in jede Kopie: xls_data hat bei 90 Item-Beschreibungen eine aeltere Fassung als sys, das Spiel zeigt sys.
+                    if (ov == before || (f.IsText && ov != after)) { if (o.WriteValue(si, f, input) == null) synced++; }
                     else if (ov != after) skipped++;
                 }
             }
@@ -129,11 +133,17 @@ namespace G2Modifier.UI
         /// <summary>Getippte, noch nicht bestaetigte Eingabe uebernehmen (vor Speichern, Wechsel, Neuaufbau).</summary>
         public virtual void Flush() { }
 
-        protected string OriginalText(Func<byte[], string> show)
+        /// <summary>Angezeigte Daten: eigene Datei oder, bei Hard-Mode-Platzhaltern, die Normal-Kopie.</summary>
+        protected byte[] D { get { return rec.ViewData(si, f); } }
+        protected int A { get { return rec.ViewAbs(si, f); } }
+
+        protected string OriginalText(Func<byte[], int, string> show)
         {
-            if (rec.File.Original == null) return "";
-            string o = f.Format(rec.File.Original, abs), v = f.Format(rec.File.Data, abs);
-            return o == v ? "" : L.C(L.T("Original")) + show(rec.File.Original);
+            int oa;
+            var od = rec.ViewOriginal(si, f, out oa);
+            if (od == null) return "";
+            string o = f.Format(od, oa), v = f.Format(D, A);
+            return o == v ? "" : L.C(L.T("Original")) + show(od, oa);
         }
     }
 
@@ -179,7 +189,7 @@ namespace G2Modifier.UI
                     if (e.KeyCode == Keys.Enter) { Commit(text.Text); e.SuppressKeyPress = true; }
                     else if (e.KeyCode == Keys.Escape) { RefreshValue(); e.SuppressKeyPress = true; }
                 };
-                text.Leave += (s, e) => Commit(text.Text);
+                text.Leave += (s, e) => { if (text.Text != shown) Commit(text.Text); };
                 text.TextChanged += (s, e) => { if (!loading && !Dead) Validate(); };
                 input = text;
             }
@@ -203,9 +213,13 @@ namespace G2Modifier.UI
             if (text != null && !text.IsDisposed) text.BackColor = on ? Theme.WarningSoft : SystemColors.Window;
         }
 
+        string shown;   // zuletzt angezeigter Wert: nur was danach getippt wurde, gilt als offene Eingabe
+
         public override void Flush()
         {
-            if (text != null && !Dead && !text.IsDisposed && text.Text != f.Format(rec.File.Data, abs)) Commit(text.Text);
+            // Nicht mit dem aktuellen Dateiwert vergleichen: nach Verwerfen/Wiederherstellen stuende sonst der alte Wert
+            // noch im Feld und wuerde erneut geschrieben.
+            if (text != null && !Dead && !text.IsDisposed && text.Text != shown && text.Text != f.Format(D, A)) Commit(text.Text);
         }
 
         string ChoiceName(long n)
@@ -221,8 +235,8 @@ namespace G2Modifier.UI
             loading = true;
             try
             {
-                string v = f.Format(rec.File.Data, abs);
-                if (combo == null) { text.Text = v; ShowError(false); }
+                string v = f.Format(D, A);
+                if (combo == null) { text.Text = v; shown = v; ShowError(false); }
                 else
                 {
                     long n; long.TryParse(v, out n);
@@ -230,9 +244,9 @@ namespace G2Modifier.UI
                     if (i < 0) { string nm = ChoiceName(n); values.Add(n); combo.Items.Add(nm); i = values.Count - 1; }
                     combo.SelectedIndex = i;
                 }
-                orig.Text = OriginalText(d =>
+                orig.Text = OriginalText((d, a) =>
                 {
-                    string o = f.Format(d, abs);
+                    string o = f.Format(d, a);
                     if (combo == null) return o;
                     long n; long.TryParse(o, out n);
                     return ChoiceName(n);
@@ -263,7 +277,7 @@ namespace G2Modifier.UI
                 cb.CheckedChanged += (s, e) =>
                 {
                     if (loading || Dead) return;
-                    long v = f.ReadNumber(rec.File.Data, abs);
+                    long v = f.ReadNumber(D, A);
                     v = cb.Checked ? v | (1L << bit) : v & ~(1L << bit);
                     Commit(v.ToString());
                 };
@@ -285,9 +299,9 @@ namespace G2Modifier.UI
             loading = true;
             try
             {
-                long v = f.ReadNumber(rec.File.Data, abs);
+                long v = f.ReadNumber(D, A);
                 for (int b = 0; b < boxes.Count; b++) boxes[b].Checked = (v & (1L << b)) != 0;
-                orig.Text = OriginalText(d => f.Meaning(d, abs, view.Ws));
+                orig.Text = OriginalText((d, a) => f.Meaning(d, a, view.Ws));
             }
             finally { loading = false; }
         }
@@ -317,8 +331,8 @@ namespace G2Modifier.UI
             loading = true;
             try
             {
-                cb.Checked = f.ReadNumber(rec.File.Data, abs) != 0;
-                orig.Text = OriginalText(d => f.ReadNumber(d, abs) != 0 ? L.T("ja") : L.T("nein"));
+                cb.Checked = f.ReadNumber(D, A) != 0;
+                orig.Text = OriginalText((d, a) => f.ReadNumber(d, a) != 0 ? L.T("ja") : L.T("nein"));
             }
             finally { loading = false; }
         }
@@ -611,9 +625,11 @@ namespace G2Modifier.UI
             bool ed = Editable(f);
             FieldControl c;
             int abs = rec.Sections[si].Base + f.Offset;
+            int va = rec.ViewAbs(si, f), oa;
+            var od = rec.ViewOriginal(si, f, out oa);
             if (f.IsFlags && f.FlagNames != null)
                 c = new FlagsBox(this, rec, si, f, ed, cap, Math.Max(width, CardWidth - 50));
-            else if (!f.IsText && f.Label.EndsWith("(0/1)") && IsBool(f, rec.File.Data, abs) && (rec.File.Original == null || IsBool(f, rec.File.Original, abs)))
+            else if (!f.IsText && f.Label.EndsWith("(0/1)") && IsBool(f, rec.ViewData(si, f), va) && (od == null || IsBool(f, od, oa)))
                 c = new BoolBox(this, rec, si, f, ed, cap.Replace(" (0/1)", "").Replace("(0/1)", "").Trim(), Math.Max(width, 170));
             else
             {

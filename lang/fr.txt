@@ -735,3 +735,8 @@ Keine Vorlage für die Verwendung gefunden.	Aucun modèle trouvé pour l'utilisa
 Verwendung hinzugefügt (Block von {0}). Noch {1} frei. Noch nicht gespeichert (Strg+S).	Utilisation ajoutée (bloc de {0}). Encore {1} libre(s). Pas encore enregistré (Ctrl+S).
 Dieses Item benutzt keinen Debug-Block.	Cet objet n'utilise pas de bloc de débogage.
 Verwendung entfernt, Block an {0} zurückgegeben. Noch nicht gespeichert (Strg+S).	Utilisation retirée, bloc rendu à {0}. Pas encore enregistré (Ctrl+S).
+{0} Namen sind Platzhalter (Bytes 30 F0). So liefert das Spiel diese Kopie aus, die Texte kommen aus einer anderen Kopie. Angezeigt wird der Name aus der ersten Kopie.	{0} noms sont des espaces réservés (octets 30 F0). Le jeu livre cette copie ainsi, les textes viennent d'une autre copie. Le nom de la première copie est affiché.
+(Platzhalter)	(espace réservé)
+(Text aus {0})	(texte de {0})
+(Platzhalter, Text kommt aus einer anderen Kopie)	(espace réservé, le texte vient d'une autre copie)
+{0} Einträge übernehmen im Original Werte aus der Normal-Fassung (Bytes 30 F0). Das Tool zeigt dort die Normal-Werte, eine Änderung schreibt einen eigenen Hard-Mode-Wert.	{0} entrées reprennent dans le fichier d'origine les valeurs de la version normale (octets 30 F0). L'outil y affiche les valeurs normales, une modification écrit une valeur propre au mode difficile.

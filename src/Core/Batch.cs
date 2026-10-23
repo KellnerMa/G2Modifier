@@ -82,13 +82,17 @@ namespace G2Modifier.Core
             var sb = new StringBuilder();
             sb.AppendLine(string.Join(";", new[] { L.T("Datensatz"), L.T("Datei"), L.T("Abschnitt"), L.T("Feld"), L.T("Wert"), L.T("Original"), "Offset", L.T("Typ"), L.T("Quelle-Feldname") }));
             foreach (var r in v.Records)
-                foreach (var s in r.Sections)
+                for (int si = 0; si < r.Sections.Count; si++)
+                {
+                    var s = r.Sections[si];
                     foreach (var f in s.Def.Fields)
                     {
-                        int abs = s.Base + f.Offset;
-                        string orig = r.File.Original != null ? f.Format(r.File.Original, abs) : "";
-                        sb.AppendLine(string.Join(";", new[] { Csv(r.Label), Csv(r.File.RelPath), Csv(L.T(s.Title)), Csv(L.T(f.Label)), Csv(f.Format(r.File.Data, abs)), Csv(orig), "0x" + abs.ToString("X"), f.TypeName, f.SourceName }));
+                        int abs = s.Base + f.Offset, oa;
+                        var od = r.ViewOriginal(si, f, out oa);   // Hard-Mode-Platzhalter: Werte der Normal-Kopie
+                        string orig = od != null ? f.Format(od, oa) : "";
+                        sb.AppendLine(string.Join(";", new[] { Csv(r.Label), Csv(r.File.RelPath), Csv(L.T(s.Title)), Csv(L.T(f.Label)), Csv(r.ViewFormat(si, f)), Csv(orig), "0x" + abs.ToString("X"), f.TypeName, f.SourceName }));
                     }
+                }
             File.WriteAllText(path, sb.ToString(), new UTF8Encoding(true));
         }
 

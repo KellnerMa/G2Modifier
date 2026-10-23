@@ -52,5 +52,19 @@ namespace G2Modifier.Core
             }
             return true;
         }
+
+        /// <summary>
+        /// Platzhalter statt Text: Paare 30 F0, davor hoechstens Leerzeichen/0x00. So stehen Namen und Beschreibungen
+        /// in sys_hardmode\ms_param.bin (HD Remaster und Anniversary Edition, Originaldatei). Das Spiel nimmt die Texte aus einer anderen Kopie.
+        /// </summary>
+        public static bool IsFillerText(byte[] d, int o, int len)
+        {
+            int i = 0;
+            while (i < len && (d[o + i] == 0x20 || d[o + i] == 0)) i++;
+            if (len - i < 2 || ((len - i) & 1) != 0) return false;
+            for (; i < len; i += 2)
+                if (d[o + i] != 0x30 || d[o + i + 1] != 0xF0) return false;
+            return true;
+        }
     }
 }

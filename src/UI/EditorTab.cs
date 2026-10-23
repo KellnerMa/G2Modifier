@@ -225,7 +225,7 @@ namespace G2Modifier.UI
         void PickValue(int row, RowInfo ri)
         {
             long cur;
-            string curText = pending.ContainsKey(row) ? pending[row] : ri.F.Format(current.File.Data, ri.Abs);
+            string curText = pending.ContainsKey(row) ? pending[row] : current.ViewFormat(ri.SectionIndex, ri.F);
             if (!long.TryParse(curText, out cur)) cur = 0;
             if (ri.F.IsFlags)
             {
@@ -250,7 +250,7 @@ namespace G2Modifier.UI
         void SetPending(int row, string text)
         {
             var ri = grid.Rows[row].Tag as RowInfo;
-            string now = ri.F.Format(current.File.Data, ri.Abs);
+            string now = current.ViewFormat(ri.SectionIndex, ri.F);
             if (text == now) pending.Remove(row); else pending[row] = text;
             grid.Rows[row].Cells[2].Value = text;
             grid.Rows[row].Cells[2].Style.BackColor = pending.ContainsKey(row) ? Theme.WarningSoft : Color.Empty;
@@ -340,9 +340,10 @@ namespace G2Modifier.UI
                 {
                     int abs = s.Base + f.Offset;
                     var ri = new RowInfo { SectionIndex = si, S = s, F = f, Abs = abs, Editable = fileOk && !f.Structural && (f.Known || settings.ShowUnknown) };
-                    string val = f.Format(r.File.Data, abs);
-                    string orig = r.File.Original != null ? f.Format(r.File.Original, abs) : "";
-                    int idx = grid.Rows.Add(L.T(s.Title), L.T(f.Label), val, orig, f.Meaning(r.File.Data, abs, ws), "0x" + abs.ToString("X"), f.TypeName);
+                    string val = r.ViewFormat(si, f);   // Hard-Mode-Platzhalter: Wert der Normal-Kopie
+                    int oa; var od = r.ViewOriginal(si, f, out oa);
+                    string orig = od != null ? f.Format(od, oa) : "";
+                    int idx = grid.Rows.Add(L.T(s.Title), L.T(f.Label), val, orig, f.Meaning(r.ViewData(si, f), r.ViewAbs(si, f), ws), "0x" + abs.ToString("X"), f.TypeName);
                     var row = grid.Rows[idx];
                     row.Tag = ri;
                     row.Cells[1].ToolTipText = L.F("Quelle: G2DataGUI, Feld {0}", f.SourceName) + (f.Known ? "" : " " + L.T("(dort als Unknown geführt)"));
@@ -380,26 +381,38 @@ namespace G2Modifier.UI
             foreach (var kv in pending.OrderBy(k => k.Key))
             {
                 var ri = grid.Rows[kv.Key].Tag as RowInfo;
-                string before = ri.F.Format(current.File.Data, ri.Abs);
-                string err = ri.F.TryWrite(current.File.Data, ri.Abs, kv.Value);
+                int si = ri.SectionIndex;
+                string before = current.ViewFormat(si, ri.F);
+                int oa; var od = current.ViewOriginal(si, ri.F, out oa);
+                string err;
+                if (od != null && od != current.File.Original && kv.Value == ri.F.Format(od, oa))
+                {
+                    // Zurueck auf Original, und das Original war ein Hard-Mode-Platzhalter: Bytes exakt wiederherstellen
+                    int from = ri.F.Offset & ~1, len = ((ri.F.Offset + ri.F.Size + 1) & ~1) - from;
+                    Buffer.BlockCopy(current.File.Original, ri.S.Base + from, current.File.Data, ri.S.Base + from, len);
+                    err = null;
+                }
+                else err = current.WriteValue(si, ri.F, kv.Value);
                 if (err != null) { MessageBox.Show(this, L.C(L.T(ri.F.Label)) + err); continue; }
                 applied++;
                 foreach (var o in others)
                 {
-                    if (ri.SectionIndex >= o.Sections.Count || o.Sections[ri.SectionIndex].Def != ri.S.Def) continue;
-                    int oAbs = o.Sections[ri.SectionIndex].Base + ri.F.Offset;
-                    var t = Tuple.Create(o, new RowInfo { S = o.Sections[ri.SectionIndex], F = ri.F, Abs = oAbs }, kv.Value);
-                    if (ri.F.Format(o.File.Data, oAbs) == before) plain.Add(t); else conflicts.Add(t);
+                    if (si >= o.Sections.Count || o.Sections[si].Def != ri.S.Def) continue;
+                    if (o.UsesNormal(si, ri.F)) continue;   // Hard-Mode-Platzhalter zeigt den neuen Normal-Wert automatisch
+                    int oAbs = o.Sections[si].Base + ri.F.Offset;
+                    var t = Tuple.Create(o, new RowInfo { SectionIndex = si, S = o.Sections[si], F = ri.F, Abs = oAbs }, kv.Value);
+                    // Texte: in jede Kopie (xls_data hat oft eine aeltere Fassung als sys)
+                    if (ri.F.IsText || ri.F.Format(o.File.Data, oAbs) == before) plain.Add(t); else conflicts.Add(t);
                 }
             }
-            foreach (var t in plain) t.Item2.F.TryWrite(t.Item1.File.Data, t.Item2.Abs, t.Item3);
+            foreach (var t in plain) t.Item1.WriteValue(t.Item2.SectionIndex, t.Item2.F, t.Item3);
             if (conflicts.Count > 0)
             {
                 string msg = L.F("{0} Wert(e) in anderen Kopien weichen schon vorher ab:", conflicts.Count) + "\n\n" +
                     string.Join("\n", conflicts.Take(12).Select(c => c.Item1.File.RelPath + "  " + L.T(c.Item2.F.Label) + " = " + c.Item2.F.Format(c.Item1.File.Data, c.Item2.Abs)).ToArray()) +
                     "\n\n" + L.T("Trotzdem überschreiben?");
                 if (MessageBox.Show(this, msg, L.T("Kopien weichen ab"), MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                    foreach (var t in conflicts) t.Item2.F.TryWrite(t.Item1.File.Data, t.Item2.Abs, t.Item3);
+                    foreach (var t in conflicts) t.Item1.WriteValue(t.Item2.SectionIndex, t.Item2.F, t.Item3);
             }
             status(L.F("{0} Wert(e) übernommen", applied) + (sync ? ", " + L.F("Kopien: {0} Datei(en) mitgezogen", plain.Select(p => p.Item1.File.RelPath).Distinct().Count()) : "") + ". " + L.T("Speichern mit Strg+S."));
             var r = current; current = null; ShowRecord(r);
@@ -415,7 +428,7 @@ namespace G2Modifier.UI
             clipboard = new List<KeyValuePair<string, string>>();
             for (int si = 0; si < current.Sections.Count; si++)
                 foreach (var f in current.Sections[si].Def.Fields.Where(x => x.Known && !x.Structural && !x.IsText))
-                    clipboard.Add(new KeyValuePair<string, string>(si + "|" + f.SourceName, f.Format(current.File.Data, current.Sections[si].Base + f.Offset)));
+                    clipboard.Add(new KeyValuePair<string, string>(si + "|" + f.SourceName, current.ViewFormat(si, f)));
             clipboardTable = table.Key; clipboardFrom = current.Label;
             status(L.F("Werte von \"{0}\" kopiert ({1} Felder, ohne Namen, Texte und Zeiger).", current.Label, clipboard.Count));
         }
@@ -430,7 +443,7 @@ namespace G2Modifier.UI
             {
                 var ri = grid.Rows[row].Tag as RowInfo;
                 string v;
-                if (ri.Editable && map.TryGetValue(ri.SectionIndex + "|" + ri.F.SourceName, out v) && v != ri.F.Format(current.File.Data, ri.Abs)) { SetPending(row, v); n++; }
+                if (ri.Editable && map.TryGetValue(ri.SectionIndex + "|" + ri.F.SourceName, out v) && v != current.ViewFormat(ri.SectionIndex, ri.F)) { SetPending(row, v); n++; }
             }
             status(L.F("{0} Werte von \"{1}\" vorgemerkt. Mit \"Übernehmen\" bestätigen.", n, clipboardFrom));
         }
@@ -443,9 +456,13 @@ namespace G2Modifier.UI
             {
                 var ri = grid.Rows[row].Tag as RowInfo;
                 if (ri.F.Structural) continue;
-                string o = ri.F.Format(current.File.Original, ri.Abs);
-                if (o != ri.F.Format(current.File.Data, ri.Abs)) { SetPending(row, o); n++; }
+                int oa; var od = current.ViewOriginal(ri.SectionIndex, ri.F, out oa);
+                string o = ri.F.Format(od, oa);
+                bool bytesDiffer = false;
+                for (int i = 0; i < ri.F.Size; i++) if (current.File.Data[ri.Abs + i] != current.File.Original[ri.Abs + i]) { bytesDiffer = true; break; }
+                if (o != current.ViewFormat(ri.SectionIndex, ri.F) || bytesDiffer) { pending[row] = o; grid.Rows[row].Cells[2].Value = o; grid.Rows[row].Cells[2].Style.BackColor = Theme.WarningSoft; n++; }
             }
+            UpdatePendingLabel();
             status(L.F("{0} Werte auf Original vorgemerkt. Mit \"Übernehmen\" bestätigen.", n));
         }
 

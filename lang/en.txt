@@ -648,3 +648,8 @@ Keine Vorlage für die Verwendung gefunden.	No template found for the usage.
 Verwendung hinzugefügt (Block von {0}). Noch {1} frei. Noch nicht gespeichert (Strg+S).	Usage added (block of {0}). {1} still free. Not saved yet (Ctrl+S).
 Dieses Item benutzt keinen Debug-Block.	This item does not use a debug block.
 Verwendung entfernt, Block an {0} zurückgegeben. Noch nicht gespeichert (Strg+S).	Usage removed, block returned to {0}. Not saved yet (Ctrl+S).
+{0} Namen sind Platzhalter (Bytes 30 F0). So liefert das Spiel diese Kopie aus, die Texte kommen aus einer anderen Kopie. Angezeigt wird der Name aus der ersten Kopie.	{0} names are placeholders (bytes 30 F0). The game ships this copy like that, the texts come from another copy. The name from the first copy is shown.
+(Platzhalter)	(placeholder)
+(Text aus {0})	(text from {0})
+(Platzhalter, Text kommt aus einer anderen Kopie)	(placeholder, text comes from another copy)
+{0} Einträge übernehmen im Original Werte aus der Normal-Fassung (Bytes 30 F0). Das Tool zeigt dort die Normal-Werte, eine Änderung schreibt einen eigenen Hard-Mode-Wert.	{0} entries take values from the normal version in the original file (bytes 30 F0). The tool shows the normal values there, a change writes a separate hard mode value.
